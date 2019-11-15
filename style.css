@@ -1,0 +1,110 @@
+
+
+.btn-light{
+    border-radius:0 !important;
+  }
+  nav{
+    height:80px;
+    font-size:30px;
+    background-color:#041e42;
+  }
+  
+  .parking-lot{
+    padding-top:60px;
+      background-image:url("parkinglotMain.jpg");
+    width:100%;
+    height:500px;
+   transition:all .8s;
+    width:100%;
+    margin:0 auto;
+  }
+  :root{
+    --secondary-color:#F7F9FB;
+  }
+  .whole{
+  }
+  .col-md-1{
+    padding: 0 !important;
+    margin:0 !important;
+  }
+  .lot{
+    padding-left:16px ;
+    padding-right:16px;
+   background-color:#31708E;
+    height:300px;
+    width:100%;
+    margin:0 auto;
+  }
+  .parking-spot{
+    height:300px;
+    border-top:var(--secondary-color) 3px solid;
+     border-left:var(--secondary-color) 3px solid;
+     border-right:var(--secondary-color) 3px solid;
+    background-color:#041e42;
+    font-family: 'Allerta Stencil', sans-serif;
+    text-align:center;
+   padding:0 px !important;
+    margin:0;
+  }
+  
+  .parking-spot h1{
+    color: var(--secondary-color);
+    margin-top:70px;
+     font-size:60px;
+   
+  
+   
+      
+  }
+  .parking-spot img{
+   
+    width:100%;
+    
+    margin-top:40px;
+    opacity:0;
+    transition:all .6s;
+    transition-timing-function: ease;
+      
+  }
+  .parking-spot:hover img{
+    margin-top:-130px;
+    opacity:1;
+  }
+  .parking-spot btn{
+     width:100%;
+   opacity:0;
+    transition:all .4s;
+    font-family: 'Roboto', sans-serif;
+    border:0 !important;
+    box-shadow:none;
+   
+   
+  }
+  .parking-spot:hover btn{
+    opacity:1;
+   
+  }
+  .col-md-4{
+    text-align:center;
+  }
+  
+  .navbar-collapse{
+    background-color:#041e42;
+    width:100% !important;
+    opacity:.8;
+    padding:0 !important;
+    margin: 0 !important;
+    visibility:hidden;
+  }
+  
+  @media (max-width: 992px)
+  {
+    
+  .navbar-collapse{
+   
+    visibility:visible;
+  }
+    .lot{
+      visibility:hidden;
+    }
+  }
