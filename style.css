@@ -1,5 +1,15 @@
 
+h5{
+    color:white;
+}
+.taken {
+    pointer-events: none;
+    opacity: .4;
+}
 
+.row{
+    background-color:white;
+}
 .btn-light{
     border-radius:0 !important;
   }
@@ -70,16 +80,14 @@
     margin-top:-130px;
     opacity:1;
   }
-  .parking-spot btn{
-     width:100%;
-   opacity:0;
-    transition:all .4s;
-    font-family: 'Roboto', sans-serif;
-    border:0 !important;
-    box-shadow:none;
-   
-   
-  }
+    .parking-spot btn {
+        width:100%;
+        opacity: 0;
+        transition: all .4s;
+        font-family: 'Roboto', sans-serif;
+        border: 0 !important;
+        box-shadow: none;
+    }
   .parking-spot:hover btn{
     opacity:1;
    
@@ -96,7 +104,7 @@
     margin: 0 !important;
     visibility:hidden;
   }
-  
+  /*
   @media (max-width: 992px)
   {
     
@@ -108,3 +116,4 @@
       visibility:hidden;
     }
   }
+      */
