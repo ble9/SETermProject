@@ -1,30 +1,20 @@
 ﻿
-//server.js
-const http = require('http'),
-    url = require('url'),
-
-    makeServer = function (request, response) {
-        let path = url.parse(request.url).pathname;
-        console.log(path);
-        if (path === '/') {
-            response.writeHead(200, { 'Content-Type': 'text/plain' });
-            response.write('Hello world');
-        }
-        else if (path === '/about') {
-            response.writeHead(200, { 'Content-Type': 'text/plain' });
-            response.write('About page');
-        }
-        else if (path === '/blog') {
-            response.writeHead(200, { 'Content-Type': 'text/plain' });
-            response.write('Blog page');
-        }
-        else {
-            response.writeHead(404, { 'Content-Type': 'text/plain' });
-            response.write('Error page');
+let http = require('http');
+let fs = require('fs');
+ 
+let handleRequest = (request, response) => {
+    response.writeHead(200, {
+        'Content-Type': 'text/html'
+    });
+    fs.readFile('./index.html', null, function (error, data) {
+        if (error) {
+            response.writeHead(404);
+            respone.write('Whoops! File not found!');
+        } else {
+            response.write(data);
         }
         response.end();
-    },
-    server = http.createServer(makeServer);
-server.listen(3000, () => {
-    console.log('Node server created at port 3000');
-});
+    });
+};
+ 
+http.createServer(handleRequest).listen(8000);
