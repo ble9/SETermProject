@@ -34,8 +34,9 @@ function saveChanges(){
    $('#reserveModal').modal('hide');
     $("#input_starttime").val("");
    
-    
+
     $(currentSpot.name).addClass("taken");
+
     currentSpot.interval = setInterval(function () {
 
 
@@ -73,7 +74,10 @@ var spots = [
         interval:'',
         number:1,
         taken: false,
-        timeLeft:0
+        timeLeft:0,
+        O:"35.540963, -97.509860"
+
+
     },
     {
         name: "#spot2",
