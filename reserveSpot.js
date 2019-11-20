@@ -6,11 +6,19 @@ function pad(n, width, z) {
 }
 
 function openReserveDialogue(spotNumber){
-// Opens Dialogue Box
  
 
     $(".spot-number").html(spotNumber);
 
+}
+
+function openDirectionsDialogue(spotNumber){
+    run(spotNumber)
+    $(".spot-number2").html(spotNumber);
+    $("#txtStartingPoint").val(spots[spotNumber-1].lat);
+
+    $("#txtDestinationPoint").val(spots[spotNumber - 1].long);
+    $("#btnQuery").trigger('click');
 }
 
 function saveChanges(){
@@ -28,9 +36,6 @@ function saveChanges(){
     console.log(currentSpot.number);
     console.log(time);
 
-    var element = document.getElementById("spot" + spotNumber);
-    element.classList.add("taken");
-
    $('#reserveModal').modal('hide');
     $("#input_starttime").val("");
    
@@ -40,7 +45,7 @@ function saveChanges(){
     currentSpot.interval = setInterval(function () {
 
 
-
+        
         currentSpot.timeLeft--;
         console.log(currentSpot);
         name = currentSpot.name + "H5";
@@ -75,8 +80,9 @@ var spots = [
         number:1,
         taken: false,
         timeLeft:0,
-        O:"35.540963, -97.509860"
-
+        lat: 35.654316,
+        long: -97.470632
+       
 
     },
     {
@@ -84,68 +90,90 @@ var spots = [
         interval: '',
         number: 2,
         taken: false,
-        timeLeft: 0
+        timeLeft: 0,
+          lat: 1,
+        long: 1
     }, {
         name: "#spot3",
         interval: '',
         number: 3,
         taken: false,
-        timeLeft: 0
+        timeLeft: 0,
+          lat: 1,
+        long: 1
     }, {
         name: "#spot4",
         interval: '',
         number: 4,
         taken: false,
-        timeLeft: 0
+        timeLeft: 0,
+          lat: 1,
+        long: 1
     }, {
         name: "#spot5",
         interval: '',
         number: 5,
         taken: false,
-        timeLeft: 0
+        timeLeft: 0,
+          lat: 1,
+        long: 1
     }, {
         name: "#spot6",
         interval: '',
         number: 6,
         taken: false,
-        timeLeft: 0
+        timeLeft: 0,
+          lat: 1,
+        long: 1
     }, {
         name: "#spot7",
         interval: '',
         number: 7,
         taken: false,
-        timeLeft: 0
+        timeLeft: 0,
+          lat: 1,
+        long: 1
     }, {
         name: "#spot8",
         interval: '',
         number: 8,
         taken: false,
-        timeLeft: 0
+        timeLeft: 0,
+          lat: 1,
+        long: 1
     }, {
         name: "#spot9",
         interval: '',
         number: 9,
         taken: false,
-        timeLeft: 0
+        timeLeft: 0,
+          lat: 1,
+        long: 1
     }, {
         name: "#spot10",
         interval: '',
         number: 10,
         taken: false,
-        timeLeft: 0
+        timeLeft: 0,
+          lat: 1,
+        long: 1
 
     }, {
         name: "#spot11",
         interval: '',
         number: 11,
         taken: false,
-        timeLeft: 0
+        timeLeft: 0,
+          lat: 1,
+        long: 1
     }, {
         name: "#spot12",
         interval: '',
         number: 12,
         taken: false,
-        timeLeft: 0
+        timeLeft: 0,
+          lat: 1,
+        long: 1
     },
 
 

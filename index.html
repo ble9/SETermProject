@@ -1,205 +1,317 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang = "en-US">
- <head>
-      
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"id="" crossorigin="anonymous"></script>
-     <script src="parkingLotTransitions.js"></script> 
-     <script src="reserveSpot.js"></script>
-     <script src="API.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" id="" crossorigin="anonymous"></script>
+    <script src="parkingLotTransitions.js"></script>
+    <script src="reserveSpot.js"></script>
+    <script src="API.js"></script>
+    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></!--script-->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIPVkMnEDVYjnBdjRumFJODs2ga34d_a4"></script>
+    <script type="text/javascript" src="Directions.js"></script>
 
+    <link href="Directions.css" type="text/css" rel="stylesheet" />
 
-     <meta charset = "UTF-8">
- <title>externalStyle.html</title>
- <link rel = "stylesheet"
-   type = "text/css"
-   href = "style.css" />
+    <meta charset="UTF-8">
+    <title>externalStyle.html</title>
+    <link rel="stylesheet"
+          type="text/css"
+          href="style.css" />
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map2 {
+            height: 400px; /* The height is 400 pixels */
+            width: 100%; /* The width is the width of the web page */
+        }
+    </style>
+</head>
+<body>
 
- </head>
-    <body>
+    <!--NAVIGATION-->
 
-          <!--NAVIGATION-->
-          
-          <nav class="navbar navbar-expand-lg  navbar-dark">
-              <a class="navbar-brand" href="#" style="font-size:30px;">UCO Parking Management <i class="fa fa-wheelchair"></i></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
+    <nav class="navbar navbar-expand-lg  navbar-dark">
+        <a class="navbar-brand" href="#" style="font-size:30px;">UCO Parking Management <i class="fa fa-wheelchair"></i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
                 <div class="row">
-                <li class="nav-item active col-md-4">
-                  <a class="nav-link" href="#">P1 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active col-md-4">
-                  <a class="nav-link" href="#">P2 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active col-md-4">
-                  <a class="nav-link" href="#">P3 <span class="sr-only">(current)</span></a>
-                </li>
-                  </div>
-                   <div class="row">
-                <li class="nav-item active col-md-4">
-                  <a class="nav-link" href="#">P4 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active col-md-4">
-                  <a class="nav-link" href="#">P5 <span class="sr-only">(current)</span></a>
-                </li>
-              <li class="nav-item active col-md-4">
-                  <a class="nav-link" href="#">P6 <span class="sr-only">(current)</span></a>
-                </li>
+                    <li class="nav-item active col-md-4">
+                        <a class="nav-link" href="#">P1 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active col-md-4">
+                        <a class="nav-link" href="#">P2 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active col-md-4">
+                        <a class="nav-link" href="#">P3 <span class="sr-only">(current)</span></a>
+                    </li>
                 </div>
-                   <div class="row">
-               <li class="nav-item active col-md-4">
-                  <a class="nav-link" href="#">P7 <span class="sr-only">(current)</span></a>
-                </li>
-              <li class="nav-item active col-md-4">
-                  <a class="nav-link" href="#">P8 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active col-md-4">
-                  <a class="nav-link" href="#">P9 <span class="sr-only">(current)</span></a>
-                </li>
+                <div class="row">
+                    <li class="nav-item active col-md-4">
+                        <a class="nav-link" href="#">P4 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active col-md-4">
+                        <a class="nav-link" href="#">P5 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active col-md-4">
+                        <a class="nav-link" href="#">P6 <span class="sr-only">(current)</span></a>
+                    </li>
                 </div>
-                   <div class="row">
-               <li class="nav-item active col-md-4">
-                  <a class="nav-link" href="#">P10 <span class="sr-only">(current)</span></a>
-                </li>
-               <li class="nav-item active col-md-4">
-                  <a class="nav-link" href="#">P11<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active col-md-4">
-                  <a class="nav-link" href="#">P12 <span class="sr-only">(current)</span></a>
-                </li>
+                <div class="row">
+                    <li class="nav-item active col-md-4">
+                        <a class="nav-link" href="#">P7 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active col-md-4">
+                        <a class="nav-link" href="#">P8 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active col-md-4">
+                        <a class="nav-link" href="#">P9 <span class="sr-only">(current)</span></a>
+                    </li>
                 </div>
-              
-              </ul>
+                <div class="row">
+                    <li class="nav-item active col-md-4">
+                        <a class="nav-link" href="#">P10 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active col-md-4">
+                        <a class="nav-link" href="#">P11<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active col-md-4">
+                        <a class="nav-link" href="#">P12 <span class="sr-only">(current)</span></a>
+                    </li>
+                </div>
+
+            </ul>
+        </div>
+
+        <!--NAVIGATION END-->
+
+
+    </nav>
+
+    <!--PARKING LOT-->
+    <div id="map2"></div>
+    <div class="lot ">
+
+        <div class="row">
+            <div class="col-lg-1 col-md-2 parking-spot" id="spot1">
+                <btn type="button" class="btn btn-light reserve" onclick="openReserveDialogue(1)" data-toggle="modal" data-target="#reserveModal">
+                    Reserve Spot
+                </btn>
+                <btn id=" directionBtn1 " type="button" class="btn btn-light reserve directions reserve" onclick="openDirectionsDialogue(1)" data-toggle="modal" data-target="#directionModal">
+                    Get Directions
+                </btn>
+                <h1>P1 </h1>
+                <h5 id="spot1H5"></h5>
+                <img src="car.png" alt="">
             </div>
-           
-                  <!--NAVIGATION END-->    
-              
-          
-          </nav>
-          
-            <!--PARKING LOT-->
-          <div class="parking-lot"></div>
-            <div class="lot ">
-              
-          <div class="row">
-          <div class="col-lg-1 col-md-2 parking-spot" id="spot1">
-           <btn type="button" class="btn btn-light reserve"  onclick="openReserveDialogue(1)" data-toggle="modal" data-target="#reserveModal">
-            Reserve Spot
-          </btn>
-            <h1>P1 </h1 >
-             <h5 id="spot1H5"></h5>
-            <img src="car.png" alt="">
+            <div class="col-lg-1 col-md-2 parking-spot " id="spot2">
+                <btn type="button" class="btn btn-light reserve" data-toggle="modal" onclick="openReserveDialogue(2)" data-target="#reserveModal" id="spot2"> Reserve Spot</btn>
+                <btn id=" directionBtn2 " type="button" class="btn btn-light reserve directions reserve" onclick="openDirectionsDialogue(2)" data-toggle="modal" data-target="#directionModal">
+                    Get Directions
+                </btn>
+                <h1>P2</h1>
+                <h5 id="spot2H5"></h5>
+                <img src="car.png" alt="">
             </div>
-          <div class="col-lg-1 col-md-2 parking-spot " id="spot2">
-          <btn type="button" class="btn btn-light reserve" data-toggle="modal" onclick="openReserveDialogue(2)" data-target="#reserveModal"id="spot2"> Reserve Spot</btn>
-            <h1 >P2</h1>
-            <h5 id="spot2H5"></h5>
-              <img src="car.png" alt="">
+            <div class="col-lg-1 col-md-2 parking-spot " id="spot3">
+                <btn type="button" class="btn btn-light reserve" data-toggle="modal" data-target="#reserveModal" id="spot3" onclick="openReserveDialogue(3)"> Reserve Spot</btn>
+                <btn id=" directionBtn3 " typeof="button" id=" directionBtn1 " class="btn btn-light reserve directions reserve" onclick="openDirectionsDialogue(3)" data-toggle="modal" data-target="#directionModal">
+                    Get Directions
+                </btn>
+                <h1>P3</h1>
+                <h5 id="spot3H5"></h5>
+                <img src="car.png" alt="">
             </div>
-          <div class="col-lg-1 col-md-2 parking-spot " id="spot3">
-           <btn type="button" class="btn btn-light reserve" data-toggle="modal" data-target="#reserveModal"id="spot3" onclick="openReserveDialogue(3)"> Reserve Spot</btn>
-            <h1>P3</h1>
-             <h5 id="spot3H5"></h5>
-              <img src="car.png" alt="">
+            <div class="col-lg-1 col-md-2 parking-spot " id="spot4">
+                <btn type="button" class="btn btn-light reserve" data-toggle="modal" data-target="#reserveModal" id="spot4" onclick="openReserveDialogue(4)"> Reserve Spot</btn>
+                <btn id=" directionBtn4 " type="button" class="btn btn-light reserve directions reserve" onclick="openDirectionsDialogue(4)" data-toggle="modal" data-target="#directionModal">
+                    Get Directions
+                </btn>
+                <h1>P4</h1>
+                <h5 id="spot4H5"></h5>
+                <img src="car.png" alt="">
             </div>
-          <div class="col-lg-1 col-md-2 parking-spot " id="spot4">
-          <btn type="button" class="btn btn-light reserve" data-toggle="modal" data-target="#reserveModal"id="spot4" onclick="openReserveDialogue(4)"> Reserve Spot</btn>
-            <h1>P4</h1>
-             <h5 id="spot4H5"></h5>
-              <img src="car.png" alt="">
+            <div class="col-lg-1 col-md-2 parking-spot " id="spot5">
+                <btn type="button" class="btn btn-light reserve" data-toggle="modal" data-target="#reserveModal" id="spot5" onclick="openReserveDialogue(5)"> Reserve Spot</btn>
+                <btn id=" directionBtn5 " type="button" class="btn btn-light reserve directions reserve" onclick="openDirectionsDialogue(5)" data-toggle="modal" data-target="#directionModal">
+                    Get Directions
+                </btn>
+                <h1>P5</h1>
+                <h5 id="spot5H5"></h5>
+                <img src="car.png" alt="">
             </div>
-          <div class="col-lg-1 col-md-2 parking-spot " id="spot5">
-          <btn type="button" class="btn btn-light reserve" data-toggle="modal" data-target="#reserveModal"id="spot5" onclick="openReserveDialogue(5)"> Reserve Spot</btn>
-            <h1>P5</h1>
-             <h5 id="spot5H5"></h5>
-              <img src="car.png" alt="">
-            </div>
-          <div class="col-lg-1 col-md-2 parking-spot  " id="spot6">
-          <btn type="button" class="btn btn-light reserve" data-toggle="modal" data-target="#reserveModal"id="spot6" onclick="openReserveDialogue(6)">Reserve Spot</btn>
-            <h1>P6</h1>
-             <h5 id="spot6H5"></h5>
-              <img src="car.png" alt="">
+            <div class="col-lg-1 col-md-2 parking-spot  " id="spot6">
+                <btn type="button" class="btn btn-light reserve" data-toggle="modal" data-target="#reserveModal" id="spot6" onclick="openReserveDialogue(6)">Reserve Spot</btn>
+                <btn id=" directionBtn6 " type="button" class="btn btn-light reserve directions reserve" onclick="openDirectionsDialogue(6)" data-toggle="modal" data-target="#directionModal">
+                    Get Directions
+                </btn>
+                <h1>P6</h1>
+                <h5 id="spot6H5"></h5>
+                <img src="car.png" alt="">
             </div>
             <btn class="col-lg-1 col-md-2 parking-spot " id="spot7">
-          <btn type="button" class="btn btn-light reserve" data-toggle="modal" data-target="#reserveModal"id="spot7" onclick="openReserveDialogue(7)"> Reserve Spot</btn>
-            <h1>P7</h1>
-             <h5 id="spot7H5"></h5>
-            <img src="car.png" alt="">
+                <btn id=" directionBtn7 " type="button" class="btn btn-light reserve" data-toggle="modal" data-target="#reserveModal" id="spot7" onclick="openReserveDialogue(7)"> Reserve Spot</btn>
+                <btn type="button" class="btn btn-light reserve directions reserve" onclick="openDirectionsDialogue(7)" data-toggle="modal" data-target="#directionModal">
+                    Get Directions
+                </btn>
+                <h1>P7</h1>
+                <h5 id="spot7H5"></h5>
+                <img src="car.png" alt="">
             </btn>
-          <div class="col-lg-1  col-md-2 parking-spot " id="spot8">
-          <btn type="button" class="btn btn-light reserve" data-toggle="modal" data-target="#reserveModal"id="spot8" onclick="openReserveDialogue(8)"> Reserve Spot</btn>
-            <h1>P8</h1>
-             <h5 id="spot8H5"></h5>
-              <img src="car.png" alt="">
+            <div class="col-lg-1  col-md-2 parking-spot " id="spot8">
+                <btn id=" directionBtn8 " type="button" class="btn btn-light reserve" data-toggle="modal" data-target="#reserveModal" id="spot8" onclick="openReserveDialogue(8)"> Reserve Spot</btn>
+                <btn type="button" class="btn btn-light reserve directions reserve" onclick="openDirectionsDialogue(8)" data-toggle="modal" data-target="#directionModal">
+                    Get Directions
+                </btn>
+                <h1>P8</h1>
+                <h5 id="spot8H5"></h5>
+                <img src="car.png" alt="">
             </div>
-          <div class="col-lg-1 col-md-2 parking-spot " id="spot9">
-          <btn type="button" class="btn btn-light reserve" data-toggle="modal" data-target="#reserveModal"id="spot9" onclick="openReserveDialogue(9)"> Reserve Spot</btn>
-            <h1>P9</h1>
-             <h5 id="spot9H5"></h5>
-              <img src="car.png" alt="">
+            <div class="col-lg-1 col-md-2 parking-spot " id="spot9">
+                <btn id=" directionBtn9 " type="button" class="btn btn-light reserve" data-toggle="modal" data-target="#reserveModal" id="spot9" onclick="openReserveDialogue(9)"> Reserve Spot</btn>
+                <btn type="button" class="btn btn-light reserve directions reserve" onclick="openDirectionsDialogue(9)" data-toggle="modal" data-target="#directionModal">
+                    Get Directions
+                </btn>
+                <h1>P9</h1>
+                <h5 id="spot9H5"></h5>
+                <img src="car.png" alt="">
             </div>
-          <div class="col-lg-1 col-md-2 parking-spot " id="spot10">
-          <btn type="button" class="btn btn-light reserve" data-toggle="modal" data-target="#reserveModal"id="spot10" onclick="openReserveDialogue(10)"> Reserve Spot</btn>
-            <h1>P10</h1>
-             <h5 id="spot10H5"></h5>
-              <img src="car.png" alt="">
+            <div class="col-lg-1 col-md-2 parking-spot " id="spot10">
+                <btn id=" directionBtn10 " type="button" class="btn btn-light reserve" data-toggle="modal" data-target="#reserveModal" id="spot10" onclick="openReserveDialogue(10)"> Reserve Spot</btn>
+                <btn type="button" class="btn btn-light reserve directions reserve" onclick="openDirectionsDialogue(10)" data-toggle="modal" data-target="#directionModal">
+                    Get Directions
+                </btn>
+                <h1>P10</h1>
+                <h5 id="spot10H5"></h5>
+                <img src="car.png" alt="">
             </div>
-          <div class="col-lg-1 col-md-2 parking-spot " id="spot11">
-          <btn type="button" class="btn btn-light reserve" data-toggle="modal" data-target="#reserveModal"id="spot11" onclick="openReserveDialogue(11)"> Reserve Spot</btn>
-            <h1>P11</h1>
-             <h5 id="spot11H5"></h5>
-              <img src="car.png" alt="">
+            <div class="col-lg-1 col-md-2 parking-spot " id="spot11">
+                <btn id=" directionBtn11 " type="button" class="btn btn-light reserve" data-toggle="modal" data-target="#reserveModal" id="spot11" onclick="openReserveDialogue(11)"> Reserve Spot</btn>
+                <btn type="button" class="btn btn-light reserve directions reserve" onclick="openDirectionsDialogue(11)" data-toggle="modal" data-target="#directionModal">
+                    Get Directions
+                </btn>
+                <h1>P11</h1>
+                <h5 id="spot11H5"></h5>
+                <img src="car.png" alt="">
             </div>
-          <div class="col-lg-1 col-md-2 parking-spot " id="spot12">
-          <btn type="button" class="btn btn-light reserve" data-toggle="modal" data-target="#reserveModal"id="spot12" onclick="openReserveDialogue(12)"> Reserve Spot</btn>
-            <h1>P12</h1>
-             <h5  id="spot12H5"></h5>
-              <img src="car.png" alt="">
+            <div class="col-lg-1 col-md-2 parking-spot " id="spot12">
+                <btn id=" directionBtn12 " type="button" class="btn btn-light reserve" data-toggle="modal" data-target="#reserveModal" id="spot12" onclick="openReserveDialogue(12)">
+                    Reserve Spot
+                </btn>
+
+                <btn type="button" class="btn btn-light directions reserve" onclick="openDirectionsDialogue(12)" data-toggle="modal" data-target="#directionModal">
+                    Get Directions
+                </btn>
+                <h1>P12</h1>
+                <h5 id="spot12H5"></h5>
+                <img src="car.png" alt="">
             </div>
-          </div>
-              
-              </div>
-          </div>
-            <!--PARKING LOT END-->
-          
-          <!-- Modal -->
-          <div class="modal fade" id="reserveModal" tabindex="-1" role="dialog" aria-labelledby="reserveModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
+        </div>
+
+    </div>
+    </div>
+    <!--PARKING LOT END-->
+    <!-- Modal -->
+    <div class="modal fade" id="reserveModal" tabindex="-1" role="dialog" aria-labelledby="reserveModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="reserveModalLabel"> Would You like to reserve Parking Spot &nbsp;</h5> <h5 class=" modal-title spot-number" >
-                  </h5>
-                  <h5 class="modal-title">
-                    &nbsp; ?  &nbsp;
-                  </h5>
-                  
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                    <h5 style="color:black" class="modal-title" id="reserveModalLabel"> Would You like to reserve Parking Spot &nbsp;</h5> <h5 style="color:black" class=" modal-title spot-number"></h5>
+                    <h5 class="modal-title">
+                        &nbsp; ?  &nbsp;
+                    </h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
-                  <div class="md-form">
-            <input placeholder="Duration" type="text" id="input_starttime" class="form-control timepicker">
-            <label for="input_starttime"></label>
-          </div>
+                    <div class="md-form">
+                        <input placeholder="Duration" type="text" id="input_starttime" class="form-control timepicker">
+                        <label for="input_starttime"></label>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" id="saveButton" onclick="saveChanges()" class="btn btn-primary"> Reserve </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="saveButton" onclick="saveChanges()" class="btn btn-primary"> Reserve </button>
                 </div>
-              </div>
             </div>
-          </div>
+        </div>
+    </div>
+
+    <!-- Modal  Directions-->
+    <div class="modal fade" id="directionModal" tabindex="-1" role="dialog" aria-labelledby="directionModalLabel" aria-hidden="true" style="width:100%; ">
+        <div class="modal-dialog" style=" max-width:90% !important; " role="document">
+            <div class="modal-content" style="width:100%; max-width:100% !important;">
+                <div class="modal-header">
+                    <h5 style="color:black;"class="modal-title" id="reserveModalLabel"> Directions to Spot &nbsp;</h5> <h5 style="color:black;" class=" modal-title spot-number2"></h5>
+                    <h5 class="modal-title">
+                        &nbsp; ?  &nbsp;
+                    </h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                   
+                    <table class="tbl-entry" style="display:none;">
+                        <tr>
+                            <td>Starting Point</td>
+                            <td><input type="text" id="txtStartingPoint" class="input-entry" /></td>
+                        </tr>
+                        <tr>
+                            <td>Destination Point</td>
+                            <td><input type="text" id="txtDestinationPoint" class="input-entry" /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="button" id="btnQuery" value="Query"  /> <input type="button" id="btnClear" value="Clear" onclick="bytutorialMap.clearEntries()" /> </td>
+                        </tr>
+                    </table>
+
+                    <table class="tbl-map">
+                        <tr>
+                            <td><div id="map"></div></td>
+                            <td><div id="panel-direction"></div></td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of Uluru
+            var uluru = { lat: 35.654316, lng: -97.470632 };
+            // The map, centered at Uluru
+
+            var map = new google.maps.Map(
+
+                document.getElementById('map2'), { zoom: 20, center: uluru, mapTypeId: 'satellite' });
+            // The marker, positioned at Uluru
 
 
-    </body>
+        }
+    </script>
+    <!--
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIPVkMnEDVYjnBdjRumFJODs2ga34d_a4&callback=initMap">
+    </script>
+        -->
+</body>
 </html>
