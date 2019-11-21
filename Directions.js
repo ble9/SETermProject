@@ -12,18 +12,14 @@ function run(spotNumber) {
         curr = position.coords.latitude + ", " + position.coords.longitude;
         bytutorialMap.initNavigateMap(curr, latl, long);
     });
-  
+
 
 }
+
 //function framework
 bytutorialMap = {
-    initNavigateMap: function (curr,latl,long) {
+    initNavigateMap: function (curr, latl, long) {
 
-       
-        
-      
-
-        
 
         var mapID = "map";
         var panelDirectionID = "panel-direction";
@@ -34,7 +30,7 @@ bytutorialMap = {
         //initialize the map
         var map = new google.maps.Map(document.getElementById(mapID), {
             zoom: 7,
-            center: { lat: latl, lng: long }
+            center: {lat: latl, lng: long}
         });
 
         //clear the direction panel
@@ -64,18 +60,18 @@ bytutorialMap = {
     },
 
     //get geolocation based on address
-  //  codeAddress: function (address) {
-        /*
-        return new Promise(function (resolve, reject) {
-            geocoder.geocode({ 'address': address }, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    resolve(results);
-                } else {
-                    reject(Error("Geocode for address " + address + " was not successful for the following reason: " + status));
-                }
-            });
+    //  codeAddress: function (address) {
+    /*
+    return new Promise(function (resolve, reject) {
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                resolve(results);
+            } else {
+                reject(Error("Geocode for address " + address + " was not successful for the following reason: " + status));
+            }
         });
-        */
+    });
+    */
     //},
     /*
     //function to get geolocation of both addresses.
