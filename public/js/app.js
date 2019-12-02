@@ -13,7 +13,7 @@ function googleLogin() {
 
 
 //Send Information to the Database
-function spotTaken(spot,val) {
+function spotTaken(spot, val) {
     const app = firebase.app();
     const db = firebase.firestore();
     const spots = db.collection("Spots");
@@ -23,7 +23,7 @@ function spotTaken(spot,val) {
             docRef.set({
                 spot1: val
             }, { merge: true });
-           
+
             break;
         case 2:
             docRef.set({
@@ -85,7 +85,7 @@ function spotTaken(spot,val) {
     docRef.get().then(function (doc) {
 
         if (doc.exists) {
-            console.log("Document data:", doc.data());
+          //  console.log("Document data:", doc.data());
         } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
@@ -93,6 +93,83 @@ function spotTaken(spot,val) {
     }).catch(function (error) {
         console.log("Error getting document:", error);
     });
-    
 
 }
+    function spotCheck(num) {
+
+        const app = firebase.app();
+        const db = firebase.firestore();
+        const spots = db.collection("Spots");
+        const docRef = spots.doc("parkingSpots");
+        var returner;
+        
+        docRef.get().then(function (doc) {
+
+            if (doc.exists) {
+                //console.log("Document data:", doc.data());
+                var data = doc.data();
+                
+                switch (num) {
+                    case 1:                
+                        console.log("DATA " +data.spot1);
+                        return data.spot1;
+                        break;
+                    case 2:
+                        
+                      //  return data.spot2;
+                        break;
+                    case 3:
+                        
+                       // return data.spot3;
+                        break;
+                    case 4:
+                       
+                     //   return data.spot4;
+                        break;
+                    case 5:
+                        
+                      //  return data.spot5;
+                        break;
+                    case 6:
+                        
+                      //  return data.spot6;
+                        break;
+                    case 7:
+                       
+                       // return data.spot7;
+                        break;
+                    case 8:
+                        
+                       // return data.spot8;
+                        break;
+                    case 9:
+                        
+                      //  return data.spot9;
+                        break;
+                    case 10:
+                      //  return data.spot10;
+                        break;
+                    case 11:
+                        
+                        //return data.spot11;
+                        
+                        break;
+                    case 12:
+                        
+                       // return data.spot12;
+                        break;
+
+                }
+                
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+        }).catch(function (error) {
+            console.log("Error getting document:", error);
+            });
+
+       
+        
+    }
+

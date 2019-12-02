@@ -1,4 +1,5 @@
 
+
 #directionModal {
     width: 100% !important;
 }
@@ -117,6 +118,11 @@ nav {
     opacity: 1;
 
 }
+
+    .parking-spot:disabled + #directionBtn1 {
+        display: inline;
+    }
+
 
 .col-md-4 {
     text-align: center;

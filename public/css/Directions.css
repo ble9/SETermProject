@@ -17,11 +17,12 @@ table.tbl-map {
     width: 100%;
 }
 
-table.tbl-map td {
-    width: 50%;
-    vertical-align: top;
-    padding: 10px;
-}
+    table.tbl-map td {
+        width: 10%;
+        vertical-align: top;
+        padding: 10px;
+        /* text-align: right; */
+    }
 
 #map {
     height: 500px;
