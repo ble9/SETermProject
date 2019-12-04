@@ -6,38 +6,13 @@ function load() {
     setInterval(function () {
 
         for (i = 0; i < spots.length; i++) {
-            var log = spotCheck(i);
-            if(log)
-        console.log(log);
-        var currentSpot = spots[i];
+            var currentSpot = spots[i];
+            spotCheck(i+1, currentSpot);
+           // if(log)
+       // console.log(log);
+        
         //console.log("RETRN: " + data);
-        var seconds = data - Date.now();
-        seconds /= 1000;
-        if (seconds > 0) {
-            $(currentSpot.name).addClass("taken");
-           
-            //console.log("SECONDS "+seconds);
-            var hours = (Math.trunc(seconds / 3600));
-            var minutes = (Math.trunc((seconds % 3600) / 60));
-            var secs = (Math.trunc(seconds % 3600) % 60);
-
-            hours = pad(hours, 2, 0);
-            minutes = pad(minutes, 2, 0);
-            secs = pad(secs, 2, 0);
-            var name = currentSpot.name + "H5";
-            $(name).text("Time Left: " + hours + ":" + minutes + ":" + secs);
-
-        }
-
-        else {
-            
-            spotTaken(currentSpot.number, 0);
-            $(currentSpot.name).removeClass("taken");
-            currentSpot.taken = false;
-            var name = currentSpot.name + "H5";
-            $(name).text("");
-            //console.log(currentSpot);
-        }
+       
     }
    }, 1000);
 

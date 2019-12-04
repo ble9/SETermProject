@@ -95,15 +95,15 @@ function spotTaken(spot, val) {
     });
 
 }
-    function spotCheck(num) {
+    function spotCheck(num, currentSpot) {
 
         const app = firebase.app();
         const db = firebase.firestore();
         const spots = db.collection("Spots");
         const docRef = spots.doc("parkingSpots");
         var returner;
-        
-        docRef.get().then(function (doc) {
+       
+       docRef.get().then(function (doc) {
 
             if (doc.exists) {
                 //console.log("Document data:", doc.data());
@@ -112,46 +112,48 @@ function spotTaken(spot, val) {
                 switch (num) {
                     case 1:                
                         console.log("DATA " +data.spot1);
-                        return data.spot1;
+                        returner = data.spot1;
+
+                        
                         break;
                     case 2:
                         
-                      //  return data.spot2;
+                       returner = data.spot2;
                         break;
                     case 3:
                         
-                       // return data.spot3;
+                        returner = data.spot3;
                         break;
                     case 4:
                        
-                     //   return data.spot4;
+                        returner = data.spot4;
                         break;
                     case 5:
                         
-                      //  return data.spot5;
+                        returner = data.spot5;
                         break;
                     case 6:
                         
-                      //  return data.spot6;
+                        returner = data.spot6;
                         break;
                     case 7:
                        
-                       // return data.spot7;
+                        returner = data.spot7;
                         break;
                     case 8:
                         
-                       // return data.spot8;
+                        returner = data.spot8;
                         break;
                     case 9:
                         
-                      //  return data.spot9;
+                        returner = data.spot9;
                         break;
                     case 10:
-                      //  return data.spot10;
+                        returner = data.spot10;
                         break;
                     case 11:
                         
-                        //return data.spot11;
+                        returner = data.spot11;
                         
                         break;
                     case 12:
@@ -159,6 +161,39 @@ function spotTaken(spot, val) {
                        // return data.spot12;
                         break;
 
+                }
+                var seconds = returner - Date.now();
+                console.log(seconds);
+                seconds /= 1000;
+                if (seconds > 1) {
+
+                    var dir = "#directionBtn"+ num;
+                    console.log(dir);
+                    $(currentSpot.name).addClass("taken");
+                    $(dir).addClass("vis");
+                    //console.log("SECONDS "+seconds);
+                    var hours = (Math.trunc(seconds / 3600));
+                    var minutes = (Math.trunc((seconds % 3600) / 60));
+                    var secs = (Math.trunc(seconds % 3600) % 60);
+
+                    hours = pad(hours, 2, 0);
+                    minutes = pad(minutes, 2, 0);
+                    secs = pad(secs, 2, 0);
+                    var name = currentSpot.name + "H5";
+                    $(name).text("Time Left: " + hours + ":" + minutes + ":" + secs);
+                    
+
+                }
+
+                else if (seconds <2 && seconds>0) {
+                    var dir = "#directionBtn" + num;
+                    $(dir).removeClass("vis");
+                    spotTaken(currentSpot.number, 0);
+                    $(currentSpot.name).removeClass("taken");
+                    currentSpot.taken = false;
+                    var name = currentSpot.name + "H5";
+                    $(name).text("");
+                    //console.log(currentSpot);
                 }
                 
             } else {
@@ -169,7 +204,7 @@ function spotTaken(spot, val) {
             console.log("Error getting document:", error);
             });
 
-       
+
         
     }
 

@@ -8,6 +8,25 @@
 
 
 }
+.vis {
+    visibility:visible !important;
+    pointer-events:initial !important;
+}
+
+.directions {
+    height: 40px;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.btn-light {
+    background-color: #32407b;
+    border:none;
+    color:white;
+   padding-left:20px;
+   box-shadow:none;
+   font-size:20px;
+}
 
 .directions {
 
@@ -35,7 +54,7 @@ nav {
     height: 80px;
     height: 80px;
     font-size: 30px;
-    background-color: #041e42;
+    background-color: #32407b;
 }
 
 .parking-lot {
@@ -49,7 +68,7 @@ nav {
 }
 
 :root {
-    --secondary-color: #F7F9FB;
+    --secondary-color: #fffdf9;
 }
 
 .whole {
@@ -63,7 +82,7 @@ nav {
 .lot {
     padding-left: 16px;
     padding-right: 16px;
-    background-color: #31708E;
+    background-color: #32407b;
     height: 300px;
     width: 100%;
     margin: 0 auto;
@@ -74,7 +93,7 @@ nav {
     border-top: var(--secondary-color) 3px solid;
     border-left: var(--secondary-color) 3px solid;
     border-right: var(--secondary-color) 3px solid;
-    background-color: #041e42;
+    background-color: #32407b;;
     font-family: 'Allerta Stencil', sans-serif;
     text-align: center;
     padding: 0px !important;
