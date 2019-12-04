@@ -81,8 +81,8 @@ var spots = [
         number: 1,
         taken: false,
         timeLeft: 0,
-        lat: 35.656345,
-        long: -97.470655
+        lat: 35.654156,
+        long: -97.470174
 
 
     },
@@ -92,32 +92,32 @@ var spots = [
         number: 2,
         taken: false,
         timeLeft: 0,
-        lat: 35.656382,
-        long: -97.470655
+        lat: 35.654157,
+        long: -97.470118
     }, {
         name: "#spot3",
         interval: '',
         number: 3,
         taken: false,
         timeLeft: 0,
-        lat: 35.6564150,
-        long: -97.470655
+        lat: 35.654490,
+        long: -97.470128
     }, {
         name: "#spot4",
         interval: '',
         number: 4,
         taken: false,
         timeLeft: 0,
-        lat: 35.6564500,
-        long: -97.470655
+        lat: 35.654491,
+        long: -97.470077
     }, {
         name: "#spot5",
         interval: '',
         number: 5,
         taken: false,
         timeLeft: 0,
-        lat: 35.6564800,
-        long: -97.470655
+        lat: 35.654494,
+        long: -97.470046
 
     }, {
         name: "#spot6",
@@ -125,8 +125,8 @@ var spots = [
         number: 6,
         taken: false,
         timeLeft: 0,
-        lat: 35.656515,
-        long: -97.470600
+        lat: 35.654494,
+        long: -97.469997
 
     }, {
         name: "#spot7",
@@ -134,8 +134,8 @@ var spots = [
         number: 7,
         taken: false,
         timeLeft: 0,
-        lat: 35.656515,
-        long: -97.470230
+        lat: 35.654493,
+        long: -97.469970
 
     }, {
         name: "#spot8",
@@ -143,8 +143,8 @@ var spots = [
         number: 8,
         taken: false,
         timeLeft: 0,
-        lat: 35.656515,
-        long: -97.470200
+        lat: 35.654492,
+        long: -97.469927
 
     }, {
         name: "#spot9",
@@ -152,8 +152,8 @@ var spots = [
         number: 9,
         taken: false,
         timeLeft: 0,
-        lat: 35.656515,
-        long: -97.470170
+        lat: 35.654492,
+        long: -97.469900
 
     }, {
         name: "#spot10",
@@ -161,34 +161,11 @@ var spots = [
         number: 10,
         taken: false,
         timeLeft: 0,
-        lat: 35.656515,
-        long: -97.470140
+        lat: 35.654491,
+        long: -97.469857
 
 
     }
-    , {
-        name: "#spot11",
-        interval: '',
-        number: 11,
-        taken: false,
-        timeLeft: 0,
-        lat: 35.656515,
-        long: -97.470110
-
-
-    }
-    , {
-        name: "#spot12",
-        interval: '',
-        number: 12,
-        taken: false,
-        timeLeft: 0,
-        lat: 35.656515,
-        long: -97.470060
-
-
-    }
-    
 
 
 
