@@ -89,7 +89,7 @@ nav {
 }
 
 .parking-spot {
-    height: 300px;
+    height: 30vh;
     border-top: var(--secondary-color) 3px solid;
     border-left: var(--secondary-color) 3px solid;
     border-right: var(--secondary-color) 3px solid;

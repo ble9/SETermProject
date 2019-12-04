@@ -38,7 +38,7 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="css/Directions.css" type="text/css" rel="stylesheet" />
     <meta charset="UTF-8">
-    <title>externalStyle.html</title>
+    <title>UCO Parking Management</title>
     <link rel="stylesheet"
           type="text/css"
           href="css/style.css" />
@@ -120,7 +120,7 @@
     </nav>
 
     <!--PARKING LOT-->
-    <div id="map2"></div>
+    <div id="map2" style="height:60vh !important;"></div>
     <div class="lot ">
 
         <div class="row">
@@ -245,9 +245,26 @@
                 <h5 id="spot12H5"></h5>
                 <img src="img/car.png" alt="">
             </div>
+
+            <!--
+    <div class="col-lg-1 col-md-2 parking-spot " id="spot13">
+        <btn id=" directionBtn12 " type="button" class="btn btn-light reserve" data-toggle="modal"
+             data-target="#reserveModal" id="spot13" onclick="openReserveDialogue(13)">
+            Reserve Spot
+        </btn>
+
+
+        <h1>P13</h1>
+        <h5 id="spot13H5"></h5>
+        <img src="img/car.png" alt="">
+    </div>
+        -->
+
         </div>
 
-    
+
+
+
 
         <div class="row">
             <btn id="directionBtn1" type="button" class="btn btn-light col-md-1 reserve directions reserve" style="  margin-top: -300px !important;"
@@ -270,7 +287,7 @@
                  onclick="openDirectionsDialogue(5)" data-toggle="modal" data-target="#directionModal">
                 Get Directions
             </btn>
-            <btn id= "directionBtn6" type="button" class="btn btn-light col-md-1 reserve directions reserve" style="  margin-top: -300px !important;"
+            <btn id="directionBtn6" type="button" class="btn btn-light col-md-1 reserve directions reserve" style="  margin-top: -300px !important;"
                  onclick="openDirectionsDialogue(6)" data-toggle="modal" data-target="#directionModal">
                 Get Directions
             </btn>
@@ -296,6 +313,10 @@
             </btn>
             <btn id="directionBtn12" type="button" class="btn btn-light col-md-1 reserve directions reserve" style="  margin-top: -300px !important;"
                  onclick="openDirectionsDialogue(12)" data-toggle="modal" data-target="#directionModal">
+                Get Directions
+            </btn>
+            <btn id="directionBtn13" type="button" class="btn btn-light col-md-1 reserve directions reserve" style="  margin-top: -300px !important;"
+                 onclick="openDirectionsDialogue(13)" data-toggle="modal" data-target="#directionModal">
                 Get Directions
             </btn>
 
@@ -394,18 +415,23 @@
         // Initialize and add the map
         function initMap() {
             // The location of Uluru
-            var uluru = { lat: 35.654316, lng: -97.470632 };
+            var uluru = { lat: 35.656234, lng: -97.470333 };
             // The map, centered at Uluru
 
             var map = new google.maps.Map(
                 document.getElementById('map2'), { zoom: 20, center: uluru, mapTypeId: 'satellite' });
             // The marker, positioned at Uluru
-            var myLatLng = uluru;
-            var marker = new google.maps.Marker({
-                position: myLatLng,
-                map: map,
-                title: 'Hello World!'
-            });
+            for (i = 0; i < spots.length; i++) {
+                var myLatLng = { lat: spots[i].lat, lng: spots[i].long };
+                var marker = new google.maps.Marker({
+                    position: myLatLng,
+                    map: map,
+                    animation: google.maps.Animation.DROP,
+                    
+                    title: 'Parking Spot: ' + (i+1),
+                    label: { color: '#fffdf9', fontWeight: 'bold', fontSize: '14px', text: '' + (i+1) }
+                });
+            }
 
         }
     </script>
