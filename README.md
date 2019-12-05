@@ -4,7 +4,7 @@
 
 <p><b>SETerm Project </b></p>
 
-<p>A web application based in javascript that accesses a database of handicappecd parking spots at the University of Central Oklahoma and allows easy access to reserve spots and give directions.</p>
+<p>A web application based in javascript that is also mobile-friendly that accesses a database of handicappecd parking spots at the University of Central Oklahoma and allows easy access to reserve spots and give directions.</p>
 
 
 <p><b> General info </b></p>
